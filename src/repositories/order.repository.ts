@@ -2,17 +2,18 @@ import * as AWS from 'aws-sdk';
 import { CreateOrderDto } from '../modules/order/dto/createOrder.dto';
 import { InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
+const env = require('dotenv').config().parsed
 
 AWS.config.update({
-    region: 'ap-southeast-1',
-    accessKeyId: 'AKIA5BSYCRCGBFB4YIHE',
-    secretAccessKey: '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',
-});
+    region: env.AWS_REGION,
+    accessKeyId: env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+}); 
 
 let dynamoDB;
 
 dynamoDB = new AWS.DynamoDB.DocumentClient({
-    region: 'ap-southeast-1',
+    region: env.AWS_REGION,
     endpoint: 'dax.ap-southeast-1.amazonaws.com',
     convertEmptyValues: true,
 });
