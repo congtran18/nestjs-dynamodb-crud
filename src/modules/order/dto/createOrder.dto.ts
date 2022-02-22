@@ -6,4 +6,10 @@ export class CreateOrderDto {
 
     @IsNotEmpty()
     category: string;
+
+    @IsNotEmpty()
+    123: string;
+
+    @IsNotEmpty()
+    1234: string;
 }

@@ -11,8 +11,23 @@ export class OrderService {
         return createdOffer;
     }
 
+    async updateOrder(id ,createOrderDto: CreateOrderDto) {
+        const updateOffer = await this.orderRepository.updateOrder(id, createOrderDto);
+        return updateOffer;
+    }
+
     async getOrderById(id) {
         const Order = await this.orderRepository.getOrderById(id);
         return Order;
+    }
+
+    async deleteOrderById(id) {
+        const Order = await this.orderRepository.deleteOrderById(id);
+        return Order;
+    }
+
+    async getAllOrder() {
+        const Orders = await this.orderRepository.scanForResultsDdbDc();
+        return Orders;
     }
 }
